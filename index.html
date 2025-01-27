@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Password Generator</title>
+	</head>
+	<body>
+		<h1>Password Generator</h1>
+
+		<div style="display: none" class="jsPasswordDiv passwordDiv">
+			<h3 id="message"></h3>
+			<h3 id="password">New Password</h3>
+			<p>^click to copy^</p>
+		</div>
+		<div id="promptBackground">
+			<div class="jsPrompt prompt">
+				<h3 id="question">question</h3>
+				<input
+					id="inputEl"
+					type="number"
+					placeholder="Enter Integer"
+					style="text-align: center"
+				/>
+				<div id="promptBtnDiv">
+					<button id="okBtn">OK</button>
+					<button id="yesBtn">Yes</button>
+					<button id="noBtn">No</button>
+					<button id="cancelBtn">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<button id="generateBtn">Generate</button>
+		<script src="index.js" defer></script>
+	</body>
+</html>
