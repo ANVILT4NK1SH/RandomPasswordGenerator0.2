@@ -49,6 +49,11 @@ button {
 
 }
 
+#incorrectInput{
+  display: none;
+  align-self: center;
+}
+
 .prompt input{
   max-width: 100px;
   align-self: center;
