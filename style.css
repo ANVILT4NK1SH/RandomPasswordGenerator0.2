@@ -62,7 +62,7 @@ button {
 #promptBtnDiv{
   display: flex;
   flex-flow: nowrap;
-  justify-content: space-between;
+  justify-content: center;
   width: auto;
 }
 
