@@ -5,17 +5,6 @@ const numbers = "1234567890";
 const specials = "!@#$%^&*()_+-=[]{};':\"\\|,.<>/?";
 let password = "";
 
-//generate button starts password generator
-generatePassword.generateBtn.addEventListener(
-	"click",
-	generatePassword.promptRun
-);
-
-//reloads page on cancel click
-generatePassword.cancelBtn.addEventListener("click", () => {
-	document.location.reload();
-});
-
 const generatePassword = {
 	promptBackground: document.querySelector("#promptBackground"),
 	question: document.querySelector("#question"),
@@ -308,3 +297,14 @@ Would you like to submit?`;
 		this.incorrectInput.textContent = password;
 	},
 };
+
+//generate button starts password generator
+generatePassword.generateBtn.addEventListener(
+	"click",
+	generatePassword.promptRun
+);
+
+//reloads page on cancel click
+generatePassword.cancelBtn.addEventListener("click", () => {
+	document.location.reload();
+});
