@@ -5,6 +5,17 @@ const numbers = "1234567890";
 const specials = "!@#$%^&*()_+-=[]{};':\"\\|,.<>/?";
 let password = "";
 
+//generate button starts password generator
+generatePassword.generateBtn.addEventListener(
+	"click",
+	generatePassword.promptRun
+);
+
+//reloads page on cancel click
+generatePassword.cancelBtn.addEventListener("click", () => {
+	document.location.reload();
+});
+
 const generatePassword = {
 	promptBackground: document.querySelector("#promptBackground"),
 	question: document.querySelector("#question"),
@@ -20,10 +31,12 @@ const generatePassword = {
 	useNumbers: false,
 	useSpecials: false,
 
+	//builds string to use for password generation
 	concatUsedCharacters: (stringToConcat) => {
 		usedCharacters += stringToConcat;
 	},
 
+	// Starting prompt asking length, sets length and runs capital prompt on okBtn click.
 	promptRun: () => {
 		usedCharacters = "";
 		this.promptBackground.style.display = "flex";
@@ -37,7 +50,7 @@ const generatePassword = {
 				this.question.textContent === "How long would you like the password?"
 			) {
 				this.length = this.inputEl.value;
-
+				//has to be greater than 3 as there are 4 possible character types. Less than 4 would cause an endless loop.
 				if (this.length > 3) {
 					this.incorrectInput.textContent = "";
 					console.log(length);
@@ -50,7 +63,7 @@ const generatePassword = {
 			}
 		});
 	},
-
+	//changes this.useCapitals to true and concats capital string if yes is clicked
 	promptCapitals: () => {
 		this.okBtn.style.display = "none";
 		this.yesBtn.style.display = "flex";
@@ -77,6 +90,7 @@ const generatePassword = {
 			}
 		});
 	},
+	////changes this.useNumbers to true and concats numbers string if yes is clicked
 	promptNumbers: () => {
 		this.question.textContent = "Would you like to use numbers?";
 		yesBtn.addEventListener("click", () => {
@@ -97,7 +111,7 @@ const generatePassword = {
 			}
 		});
 	},
-
+	//changes this.useSpecials to true and concats special string if yes is clicked
 	promptSpecials: () => {
 		this.question.textContent = "Would you like to use special characters?";
 		yesBtn.addEventListener("click", () => {
@@ -125,6 +139,7 @@ const generatePassword = {
 		});
 	},
 
+	//Shows users input and runs the password generator on okBtn click
 	promptSubmit: () => {
 		this.yesBtn.style.display = "none";
 		this.noBtn.style.display = "none";
@@ -146,10 +161,12 @@ Would you like to submit?`;
 		});
 	},
 
+	//changes string(lowerCase, capitals, numbers, specials) into an aray. If any character from password matches any character in the array the function returns true.
 	containsChar: (password, characters) => {
 		return [...characters].some((char) => password.includes(char));
 	},
 
+	//checks useParameters and impliments the code to build the password until it contains wanted characters
 	createPassword: () => {
 		if (this.useCapitals && !this.useNumbers && !this.useSpecials) {
 			//do until password contains wanted characters.
@@ -163,12 +180,13 @@ Would you like to submit?`;
 					i++;
 				}
 			} while (
+				//will run if password doesn't contain at least 1 lower case letter and 1 capital
 				!generatePassword.containsChar(password, lowerCase) ||
 				!generatePassword.containsChar(password, capitals)
 			);
 			console.log(password);
-		}
-
+		} 
+		
 		else if (this.useCapitals && this.useNumbers && !this.useSpecials) {
 			do {
 				password = "";
@@ -185,8 +203,8 @@ Would you like to submit?`;
 				!generatePassword.containsChar(password, numbers)
 			);
 			console.log(password);
-		}
-
+		} 
+		
 		else if (this.useCapitals && !this.useNumbers && this.useSpecials) {
 			do {
 				password = "";
@@ -203,8 +221,8 @@ Would you like to submit?`;
 				!generatePassword.containsChar(password, specials)
 			);
 			console.log(password);
-		}
-
+		} 
+		
 		else if (this.useCapitals && this.useNumbers && this.useSpecials) {
 			do {
 				password = "";
@@ -222,8 +240,8 @@ Would you like to submit?`;
 				!generatePassword.containsChar(password, specials)
 			);
 			console.log(password);
-		}
-
+		} 
+		
 		else if (!this.useCapitals && this.useNumbers && !this.useSpecials) {
 			do {
 				password = "";
@@ -239,8 +257,8 @@ Would you like to submit?`;
 				!generatePassword.containsChar(password, numbers)
 			);
 			console.log(password);
-		}
-
+		} 
+		
 		else if (!this.useCapitals && this.useNumbers && this.useSpecials) {
 			do {
 				password = "";
@@ -257,8 +275,8 @@ Would you like to submit?`;
 				!generatePassword.containsChar(password, specials)
 			);
 			console.log(password);
-		}
-
+		} 
+		
 		else if (!this.useCapitals && !this.useNumbers && this.useSpecials) {
 			do {
 				password = "";
@@ -274,7 +292,9 @@ Would you like to submit?`;
 				!generatePassword.containsChar(password, specials)
 			);
 			console.log(password);
-		}else{
+		} 
+		//creates password using only lowercase letters as all other possible combinations are checked in the if/else if functions
+		else {
 			password = "";
 			let i = 0;
 			while (i < this.length) {
@@ -288,14 +308,3 @@ Would you like to submit?`;
 		this.incorrectInput.textContent = password;
 	},
 };
-
-generatePassword.generateBtn.addEventListener(
-	"click",
-	generatePassword.promptRun
-);
-
-generatePassword.cancelBtn.addEventListener("click", () => {
-	document.location.reload();
-});
-
-
