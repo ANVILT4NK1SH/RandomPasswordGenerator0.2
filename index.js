@@ -152,6 +152,7 @@ Would you like to submit?`;
 
 	createPassword: () => {
 		if (this.useCapitals && !this.useNumbers && !this.useSpecials) {
+			//do until password contains wanted characters.
 			do {
 				password = "";
 				let i = 0;
@@ -168,7 +169,7 @@ Would you like to submit?`;
 			console.log(password);
 		}
 
-		if (this.useCapitals && this.useNumbers && !this.useSpecials) {
+		else if (this.useCapitals && this.useNumbers && !this.useSpecials) {
 			do {
 				password = "";
 				let i = 0;
@@ -186,7 +187,7 @@ Would you like to submit?`;
 			console.log(password);
 		}
 
-		if (this.useCapitals && !this.useNumbers && this.useSpecials) {
+		else if (this.useCapitals && !this.useNumbers && this.useSpecials) {
 			do {
 				password = "";
 				let i = 0;
@@ -204,7 +205,7 @@ Would you like to submit?`;
 			console.log(password);
 		}
 
-		if (this.useCapitals && this.useNumbers && this.useSpecials) {
+		else if (this.useCapitals && this.useNumbers && this.useSpecials) {
 			do {
 				password = "";
 				let i = 0;
@@ -223,7 +224,7 @@ Would you like to submit?`;
 			console.log(password);
 		}
 
-		if (!this.useCapitals && this.useNumbers && !this.useSpecials) {
+		else if (!this.useCapitals && this.useNumbers && !this.useSpecials) {
 			do {
 				password = "";
 				let i = 0;
@@ -240,7 +241,7 @@ Would you like to submit?`;
 			console.log(password);
 		}
 
-		if (!this.useCapitals && this.useNumbers && this.useSpecials) {
+		else if (!this.useCapitals && this.useNumbers && this.useSpecials) {
 			do {
 				password = "";
 				let i = 0;
@@ -258,7 +259,7 @@ Would you like to submit?`;
 			console.log(password);
 		}
 
-		if (!this.useCapitals && !this.useNumbers && this.useSpecials) {
+		else if (!this.useCapitals && !this.useNumbers && this.useSpecials) {
 			do {
 				password = "";
 				let i = 0;
@@ -273,7 +274,18 @@ Would you like to submit?`;
 				!generatePassword.containsChar(password, specials)
 			);
 			console.log(password);
+		}else{
+			password = "";
+			let i = 0;
+			while (i < this.length) {
+				password += usedCharacters.charAt(
+					Math.floor(Math.random() * usedCharacters.length)
+				);
+				i++;
+			}
 		}
+
+		this.incorrectInput.textContent = password;
 	},
 };
 
@@ -286,4 +298,4 @@ generatePassword.cancelBtn.addEventListener("click", () => {
 	document.location.reload();
 });
 
-//do while until password contains wanted characters.
+
