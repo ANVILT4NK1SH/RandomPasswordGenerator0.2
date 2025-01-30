@@ -52,6 +52,7 @@ button {
 #incorrectInput{
   display: flex;
   align-self: center;
+  padding: 10px 20px;
 }
 
 .prompt input{
